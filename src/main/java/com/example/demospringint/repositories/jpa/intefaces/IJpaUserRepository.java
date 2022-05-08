@@ -7,11 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface IJpaUserRepository extends JpaRepository<User, Long> {
-    @Query(
-            value = "SELECT * FROM users ORDER BY id ",
-            countQuery = "SELECT count(*) FROM Users",
-            nativeQuery = true)
-    Page<User> findAllUsersWithPagination(Pageable pageable);
 
-    Page<User> findAll(Pageable pageable);
 }
