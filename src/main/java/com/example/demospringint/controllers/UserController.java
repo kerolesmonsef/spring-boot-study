@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Optional;
+
 @Slf4j
 @Controller
 @RequestMapping("/user")
@@ -37,13 +39,10 @@ public class UserController {
 
     @ResponseBody
     @GetMapping("/jpa/all")
-    public Iterable<User> all(@RequestParam("page") Integer page) {
+    public Iterable<User> all(@RequestParam("page") Optional<Integer> page) {
 
-        if (page == null) {
-            page = 1;
-        }
 
-        Pageable pageable = PageRequest.of(page, 1);
+        Pageable pageable = PageRequest.of(page.orElse(1), 1);
 
         return userRepository.findAll(pageable);
     }
