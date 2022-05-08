@@ -1,0 +1,102 @@
+<!-- tag::all[] -->
+<!-- tag::head[] -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+
+<body>
+<!--<table border="1">-->
+<!--    <tr th:each="var : ${#vars.getVariableNames()}">-->
+<!--        <td th:text="${var}"></td>-->
+<!--        <td th:text="${#vars.getVariable(var)}"></td>-->
+<!--    </tr>-->
+<!--</table>-->
+<h1>Design your taco!! <span th:text="${em}"></span></h1>
+<img th:src="@{/images/TacoCloud.png}"/>
+
+<form method="POST" th:object="${design}">
+
+
+    <span class="validationError"
+          th:if="${#fields.hasErrors('ingredients')}"
+          th:errors="*{ingredients}">Ingredient Error</span>
+
+    <!-- tag::all[] -->
+    <div class="grid">
+
+        <div class="ingredient-group" id="wraps">
+            <h3>Designate your wrap:</h3>
+            <div th:each="ingredient : ${wrap}">
+                <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+                <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+
+        <div class="ingredient-group" id="proteins">
+            <h3>Pick your protein:</h3>
+            <!--/*@thymesVar id="protein" type="java.util.List<com.example.demospringint.models.Ingredient>"*/-->
+            <div th:each="ingredient : ${protein}">
+                <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+                <!--/*@thymesVar id="ingredient" type="com.example.demospringint.models.Ingredient"*/-->
+                <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+
+        <div class="ingredient-group" id="cheeses">
+            <h3>Choose your cheese:</h3>
+            <div th:each="ingredient : ${cheese}">
+                <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+                <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+
+        <div class="ingredient-group" id="veggies">
+            <h3>Determine your veggies:</h3>
+            <div th:each="ingredient : ${veggies}">
+                <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+                <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+
+        <div class="ingredient-group" id="sauces">
+            <h3>Select your sauce:</h3>
+            <div th:each="ingredient : ${sauce}">
+                <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+                <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+    </div>
+
+    <div>
+
+
+        <h3>Name your taco creation:</h3>
+        <input type="text" th:field="*{name}"/>
+
+        <span class="validationError"
+              th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}"
+        >Name Error</span>
+        <br/>
+
+        <button>Submit your taco</button>
+    </div>
+
+    <div th:insert="components/border :: input(value='soma')"></div>
+</form>
+<span th:text="${#fields.hasErrors('design.name')}">XXX</span>
+
+
+<div th:insert="footer :: span">
+    this is footer
+</div>
+</body>
+
+
+</html>
+<!-- end::all[] -->
+

@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="input" th:with="name = ${name} ?: '' , value = ${value} ?: 'default value'">
+   <input th:name="${name}" th:value="${value} ?: ''"/>
+</div>
+</body>
+</html>
