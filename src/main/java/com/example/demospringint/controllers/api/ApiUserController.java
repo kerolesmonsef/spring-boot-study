@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,8 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/api/users",produces = "application/json")
-@CrossOrigin(origins="*")
+@RequestMapping(value = "/api/users", produces = "application/json")
+@CrossOrigin(origins = "*")
 public class ApiUserController {
     IJpaUserRepository userRepository;
 
@@ -40,7 +41,7 @@ public class ApiUserController {
     }
 
     @PostMapping("")
-    public User store(@RequestBody @Valid User user){
+    public User store(@RequestBody @Valid User user) {
         return userRepository.save(user);
     }
 
@@ -49,5 +50,14 @@ public class ApiUserController {
         Pageable pageable = PageRequest.of(1, 1);
 
         return userRepository.findAll(pageable).toList();
+    }
+
+
+
+    @PutMapping("/{id}")
+    public User update(@PathVariable("id") Long id, @RequestBody @Valid User user) {
+        userRepository.save(user);
+        return user; // TODO: return updated user
+
     }
 }
