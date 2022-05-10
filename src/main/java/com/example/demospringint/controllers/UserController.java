@@ -44,6 +44,7 @@ public class UserController {
 
         Pageable pageable = PageRequest.of(page.orElse(1), 1);
 
+
         return userRepository.findAll(pageable);
     }
 }
