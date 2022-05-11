@@ -24,6 +24,7 @@ public class UserByIdConverter implements Converter<String, User> {
     public User convert(String id) {
         // get user from database
         User user = this.userRepository.find(id);
+        user.getName();
         // that is because it is throws an exception
         return Objects.requireNonNullElseGet(user, () -> new User());
     }

@@ -10,5 +10,5 @@ public class Test {
 
     @NotNull
     @Size(min = 5)
-    String title;
+    String name;
 }
