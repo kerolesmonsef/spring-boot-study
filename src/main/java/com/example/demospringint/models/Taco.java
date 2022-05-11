@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Entity
@@ -20,11 +19,11 @@ public class Taco {
     @Size(min = 5)
     private String name = "de n";
 
-    @NotNull
-    @Size(min = 1, message = "You must choose at least 1 ingredient")
-
-    @ManyToMany
-    private List<Ingredient> ingredients;
+//    @NotNull
+//    @Size(min = 1, message = "You must choose at least 1 ingredient")
+//    @ManyToMany
+//
+//    private List<Ingredient> ingredients;
 
     private Date createdAt;
 
