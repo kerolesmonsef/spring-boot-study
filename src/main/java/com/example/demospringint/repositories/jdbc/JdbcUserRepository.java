@@ -20,10 +20,10 @@ public class JdbcUserRepository implements UserRepository {
         try {
             return jdbc.queryForObject(
                     "select id, name from users where id=?",
-                    new BeanPropertyRowMapper<User>(User.class), id);
+                    new BeanPropertyRowMapper<>(User.class), id);
 
         } catch (Exception e) {
-            System.out.println("catch");
+            System.out.println("catch" + e.getMessage());
             return null;
         }
 

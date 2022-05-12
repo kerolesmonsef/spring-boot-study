@@ -41,7 +41,6 @@ public class Order implements Serializable {
     private String ccCVV = "123";
 
     private Date placedAt;
-    private Date updatedAt;
 
     @ManyToMany(targetEntity=Taco.class)
     private List<Taco> tacos = new ArrayList<Taco>();
@@ -53,7 +52,6 @@ public class Order implements Serializable {
     @PrePersist
     void placedAt() {
         this.placedAt = new Date();
-        this.updatedAt = new Date();
     }
 
 }

@@ -37,13 +37,14 @@ public class TacoController {
     }
 
 
+    @ResponseBody
     @PostMapping
     public String processDesign(@ModelAttribute("design") @Valid Taco design, BindingResult bindingResult) {
 
-//        log.info(design.getIngredients().toString());
         if (bindingResult.hasErrors()) {
             return "design";
         }
+log.info(design.toString());
 
         return "redirect:/orders/current";
     }
