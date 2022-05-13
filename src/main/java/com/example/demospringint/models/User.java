@@ -3,13 +3,7 @@ package com.example.demospringint.models;
 import lombok.Data;
 import org.springframework.data.rest.core.annotation.RestResource;
 
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
