@@ -1,5 +1,6 @@
 package com.example.demospringint.tests;
 
 public interface Parent {
-    String getName();
+    int calculate(int x);
+
 }

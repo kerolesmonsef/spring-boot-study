@@ -18,7 +18,7 @@ import java.util.List;
 @Slf4j
 @Controller
 @RequestMapping("/design")
-@ControllerAdvice
+@ControllerAdvice // this will call the @ModelAttribute on each request event on api
 public class TacoController {
 
     private final IngredientRepository ingredientRepo;
@@ -53,7 +53,7 @@ log.info(design.toString());
     @ModelAttribute
     public void getDesignIngredients(Model model) {
         List<Ingredient> ingredients = new ArrayList<>();
-        ingredientRepo.all().forEach(ingredients::add);
+//        ingredientRepo.all().forEach(ingredients::add);
 
 
         Ingredient.Type[] types = Ingredient.Type.values();

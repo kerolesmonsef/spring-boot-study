@@ -1,7 +1,7 @@
 package com.example.demospringint.controllers.api;
 
 import com.example.demospringint.models.User;
-import com.example.demospringint.repositories.jpa.intefaces.IJpaUserRepository;
+import com.example.demospringint.repositories.jpa.intefaces.JpaUserRepository;
 import com.example.demospringint.resources.UserResource;
 import com.example.demospringint.resources.UserResourceAssembler;
 import com.example.demospringint.resources.i.Response;
@@ -10,27 +10,23 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Slf4j
 @RestController
 @RequestMapping(value = "/api/users", produces = "application/json")
 @CrossOrigin(origins = "*")
 public class ApiUserController {
-    IJpaUserRepository userRepository;
+    JpaUserRepository userRepository;
 
-    public ApiUserController(IJpaUserRepository userRepository) {
+    public ApiUserController(JpaUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

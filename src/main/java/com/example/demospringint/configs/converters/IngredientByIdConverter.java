@@ -1,4 +1,4 @@
-package com.example.demospringint.config.converters;
+package com.example.demospringint.configs.converters;
 
 import com.example.demospringint.models.Ingredient;
 import com.example.demospringint.repositories.jdbc.interfaces.IngredientRepository;

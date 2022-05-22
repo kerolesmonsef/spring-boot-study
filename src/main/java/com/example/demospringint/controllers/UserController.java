@@ -1,7 +1,7 @@
 package com.example.demospringint.controllers;
 
 import com.example.demospringint.models.User;
-import com.example.demospringint.repositories.jpa.intefaces.IJpaUserRepository;
+import com.example.demospringint.repositories.jpa.intefaces.JpaUserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 import org.springframework.data.domain.PageRequest;
@@ -22,9 +22,9 @@ import java.util.Optional;
 public class UserController {
 
     Environment env;
-    IJpaUserRepository userRepository;
+    JpaUserRepository userRepository;
 
-    public UserController(Environment env, IJpaUserRepository userRepository) {
+    public UserController(Environment env, JpaUserRepository userRepository) {
         this.env = env;
         this.userRepository = userRepository;
     }
