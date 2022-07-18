@@ -49,8 +49,8 @@ public class UserController {
 
     @ResponseBody
     @GetMapping("/{id}")
-    public User show(@PathVariable("id") Optional<User> user, @ModelAttribute("user") String userString) {
-        System.out.println(userString);
+    public User show(@PathVariable("id") Optional<User> user) {
+        System.out.println("keroles");
         return user.orElse(null);
     }
 
@@ -63,7 +63,14 @@ public class UserController {
         return userRepository.findAll(pageable);
     }
 
-    // update user
+   // delete user using reactive programming
+    @ResponseBody
+    @DeleteMapping("/jpa/{id}")
+    public ResponseEntity delete(@PathVariable("id") Optional<User> user) {
+        userRepository.delete(user.orElse(null));
+        return ResponseEntity.ok().build();
+    }
+
 
 
 }

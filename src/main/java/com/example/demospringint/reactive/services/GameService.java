@@ -13,7 +13,7 @@ public class GameService {
             new Game("Overwatch", 59.99f, 100),
             new Game("Fifa 19", 59.99f, 100),
             new Game("Fortnite", 59.99f, 100),
-            new Game("PUBG", 59.99f, 100),
+            new Game("PUBG", 59.99f, 0),
             new Game("Apex Legends", 59.99f, 100)
     );
 

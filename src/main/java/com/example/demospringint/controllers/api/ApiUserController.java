@@ -3,21 +3,19 @@ package com.example.demospringint.controllers.api;
 import com.example.demospringint.models.User;
 import com.example.demospringint.repositories.jpa.intefaces.JpaUserRepository;
 import com.example.demospringint.resources.UserResource;
-import com.example.demospringint.resources.UserResourceAssembler;
 import com.example.demospringint.resources.i.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @Slf4j
 @RestController
@@ -45,15 +43,16 @@ public class ApiUserController {
     }
 
     @GetMapping("")
-    public CollectionModel<UserResource> users() {
+    public List<User> users() throws InterruptedException {
 
         Pageable pageable = PageRequest.of(1, 5);
 
-        List<User> users = userRepository.findAll(pageable).getContent();
+        //        CollectionModel<UserResource> tacoResources = new UserResourceAssembler().toCollectionModel(users);
+        System.out.println("called apiapi at" + new Date() + " => " + Thread.currentThread().getName());
 
-        CollectionModel<UserResource> tacoResources = new UserResourceAssembler().toCollectionModel(users);
-
-        return tacoResources;
+        Thread.sleep(5000);
+//        return userRepository.findAll(pageable).getContent();
+        return Arrays.asList(new User());
     }
 
 

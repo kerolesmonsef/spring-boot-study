@@ -10,6 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class DemospringintApplication {
 
     public static void main(String[] args) {
+
         ConfigurableApplicationContext context = SpringApplication.run(DemospringintApplication.class, args);
     }
 
